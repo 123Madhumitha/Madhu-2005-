@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Student Resume</title>
+  <style>
+    /* Reset styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Attractive Dark Blue Background Gradient */
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #0a0f24, #142850, #001c30);
+      /* Added a third darker blue */
+      color: #ffffff;
+      line-height: 1.6;
+      padding: 20px;
+      animation: gradientAnimation 15s ease infinite;
+      /* Added animated gradient */
+      background-size: 300% 300%;
+      /* For the animation */
+    }
+
+    /* Animated Gradient */
+    @keyframes gradientAnimation {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    /* Resume Container */
+    .container {
+      max-width: 900px;
+      margin: auto;
+      background: rgba(15, 15, 40, 0.9);
+      backdrop-filter: blur(8px);
+      padding: 30px;
+      /* Increased padding for better spacing */
+      border-radius: 12px;
+      /* Slightly more rounded corners */
+      box-shadow: 0 0 20px rgba(0, 162, 255, 0.6);
+      /* Stronger shadow */
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    /* Smooth fade-in effect */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(15px);
+      }
+
+      /* Slightly more pronounced */
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Header */
+    header {
+      text-align: center;
+      margin-bottom: 35px;
+      /* Increased margin */
+    }
+
+    .profile-pic {
+      width: 160px;
+      /* Slightly larger */
+      height: 160px;
+      border-radius: 50%;
+      border: 5px solid #00aaff;
+      /* Thicker border */
+      object-fit: cover;
+      margin-bottom: 18px;
+      /* Increased margin */
+      box-shadow: 0 4px 8px rgba(0, 170, 255, 0.3);
+      /* Added shadow to profile pic */
+    }
+
+    header h1 {
+      font-size: 2.8em;
+      /* Slightly larger */
+      background: linear-gradient(90deg, #00aaff, #6a00ff, #ff7b00);
+      /* More vibrant gradient */
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 5px;
+      /* Added a little space */
+    }
+
+    header p {
+      font-size: 1.1em;
+      color: #ccc;
+      /* Lighter text for the subtitle */
+    }
+
+    /* Section Headings */
+    section h2 {
+      border-bottom: 4px solid #00aaff;
+      /* Thicker border */
+      padding-bottom: 12px;
+      /* Increased padding */
+      margin-bottom: 20px;
+      /* Increased margin */
+      font-size: 2em;
+      /* Slightly larger */
+      color: #e0f7fa;
+      /* Light cyan color */
+    }
+
+    /* Skills Section */
+    .skills ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      padding: 0;
+      gap: 8px;
+      /* Space between skill pills */
+    }
+
+    .skills li {
+      background: linear-gradient(135deg, #00aaff, #a75bcf);
+      /* New, more appealing gradient */
+      color: white;
+      padding: 12px 22px;
+      /* Slightly more padding */
+      border-radius: 30px;
+      /* More rounded */
+      font-size: 1.05em;
+      /* Slightly larger font */
+      transition: transform 0.3s, background 0.3s, box-shadow 0.3s;
+      /* Added box-shadow transition */
+      box-shadow: 0 2px 5px rgba(0, 170, 255, 0.2);
+      /* Subtle shadow */
+    }
+
+    .skills li:hover {
+      transform: translateY(-5px);
+      /* More pronounced hover effect */
+      background: linear-gradient(135deg, #a75bcf, #ff8a00);
+      /* Different hover gradient */
+      box-shadow: 0 5px 10px rgba(0, 170, 255, 0.4);
+      /* Stronger hover shadow */
+    }
+
+    /* Contact Section */
+    .contact ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .contact li {
+      margin-bottom: 12px;
+      /* Increased margin */
+      font-size: 1.15em;
+      /* Slightly larger font */
+    }
+
+    .contact a {
+      color: #00aaff;
+      text-decoration: none;
+      transition: all 0.3s ease-in-out;
+      display: inline-block;
+      padding: 10px 15px;
+      /* More padding */
+      background: rgba(255, 255, 255, 0.15);
+      /* Slightly more opaque */
+      border-radius: 7px;
+      /* More rounded */
+    }
+
+    .contact a:hover {
+      background: rgba(255, 255, 255, 0.25);
+      /* More opaque on hover */
+      text-decoration: none;
+      font-weight: 600;
+      /* Slightly bolder on hover */
+      color: #ff8a00;
+      /* Different hover color */
+    }
+
+    /* Education Section */
+    .education div {
+      margin-bottom: 20px;
+      padding: 15px;
+      border-left: 3px solid #6a00ff;
+      /* Purple accent color */
+      background-color: rgba(255, 255, 255, 0.05);
+      /* Subtle background */
+      border-radius: 5px;
+    }
+
+    .education h3 {
+      font-size: 1.4em;
+      margin-bottom: 5px;
+      color: #bbdefb;
+      /* Light blue */
+    }
+
+    .education p {
+      color: #ccc;
+    }
+
+    /* Projects Section */
+    .projects {
+      margin-bottom: 30px;
+    }
+
+    .projects div {
+      margin-bottom: 15px;
+      padding: 15px;
+      border-left: 3px solid #ff7b00;
+      /* Orange accent color */
+      background-color: rgba(255, 255, 255, 0.05);
+      border-radius: 5px;
+    }
+
+    .projects h3 {
+      font-size: 1.4em;
+      margin-bottom: 5px;
+      color: #a7ffeb;
+      /* Light green/cyan */
+    }
+
+    .projects p {
+      color: #ddd;
+      font-size: 1.05em;
+    }
+
+    /* About Section */
+    .about p {
+      font-size: 1.1em;
+      line-height: 1.7;
+      color: #ddd;
+    }
+
+    /* Certificates and Achievements Section */
+    .achievements div {
+      margin-bottom: 20px;
+      padding: 15px;
+      border-left: 3px solid #00c698;
+      /* Teal accent color */
+      background-color: rgba(255, 255, 255, 0.05);
+      border-radius: 5px;
+    }
+
+    .achievements h3 {
+      font-size: 1.4em;
+      margin-bottom: 5px;
+      color: #ffcc80;
+      /* Light orange */
+    }
+
+    .achievements p {
+      color: #ddd;
+    }
+
+    /* Scroll Effect */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+      /* Slightly longer transition */
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Resume Download Button */
+    .download-resume {
+      display: inline-block;
+      padding: 12px 24px;
+      background-color: #00aaff;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 1.1em;
+      transition: background-color 0.3s, transform 0.3s;
+      margin-top: 20px;
+      box-shadow: 0 4px 8px rgba(0, 170, 255, 0.3);
+    }
+
+    .download-resume:hover {
+      background-color: #008ccc;
+      transform: scale(1.05);
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2.3em;
+      }
+
+      .skills ul {
+        display: block;
+      }
+
+      .skills li {
+        display: inline-block;
+        margin-right: 5px;
+        margin-bottom: 5px;
+      }
+
+      .contact li {
+        font-size: 1.1em;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <img src="https://via.placeholder.com/160" alt="Profile Picture" class="profile-pic">
+      <h1>MADHUMITHA R</h1>
+      <p>Aspiring Full-Stack Developer | Passionate about Technology</p>
+    </header>
+
+    <section class="about reveal">
+      <h2>ABOUT ME</h2>
+      <p>I am a second-year BSc IT student passionate about full-stack development. Currently enhancing my skills in web and software development while preparing for real-world projects.</p>
+    </section><br>
+
+    <section class="education reveal">
+      <h2>🎓 EDUCATION</h2>
+      <div>
+        <h3>Bachelor of Science in Information Technology (BSc IT)</h3>
+        <p>Vasavi College, Erode | Batch 2023-2026</p></p>
+      </div>
+    </section><br>
+
+    <section class="skills reveal">
+      <h2>💡 SKILLS</h2>
+      <ul>
+        <li>Programming: C, C++, Java</li>
+        <li>Front-End Web Development</li>
+        <li>Linux Basics</li>
+        <li>Effective use of AI tools</li>
+        <li>English & Tamil Communication</li>
+      </ul>
+    </section><br>
+
+    <section class="projects reveal">
+      <h2>🚀 PROJECTS</h2>
+      <div>
+        <h3>✔️Digital Portfolio this  Website</h3>
+        <p>Developed a responsive personal portfolio website using HTML, CSS, and JavaScript to showcase my skills and projects.</p>
+        <p>Key Features: Project showcase, contact form, about me section.</p>
+      </div>
+      <div>
+        <h3>✔️Task Management Application</h3>
+        <p>Built a task management application using React.js for the frontend and Node.js with Express for the backend.</p>
+        <p>Key Features: User authentication, task creation, assignment, and status tracking.</p>
+      </div>
+    </section><br>
+
+    <section class="achievements reveal">
+      <h2>🏆 CERTIFICATES & ACHIVEMENTS</h2>
+      <div>
+        <h3>✔️IBM Certified Cloud Course</h3>
+        <h3>✔️Presented at National AI PPT Conference</h3>
+      </div>
+    </section><br>
+
+    <section class="contact reveal">
+      <h2>CONTACT</h2>
+      <ul>
+        <li><i style="margin-right: 8px; color: #00aaff;"></i>Phone: <a href="tel:+919788649434">+91 9788649434</a></li>
+        <li><i style="margin-right: 8px; color: #6a00ff;"></i>Email: <a href="mailto:madhued06@gmail.com">madhued06@gmail.com</a></li>
+      </ul>
+    </section>
+
+    <div style="text-align: center;">
+      <a href="your_resume.pdf" download="JohnDoe_Resume.pdf" class="download-resume">Download Resume</a>
+    </div>
+  </div>
+
+  <script>
+    // Scroll Reveal Effect
+    function revealElements() {
+      let reveals = document.querySelectorAll(".reveal");
+      reveals.forEach((element) => {
+        let windowHeight = window.innerHeight;
+        let elementTop = element.getBoundingClientRect().top;
+        let revealPoint = 80; // Adjusted reveal point
+
+        if (elementTop < windowHeight - revealPoint) {
+          element.classList.add("active");
+        }
+      });
+    }
+
+    window.addEventListener("scroll", revealElements);
+    revealElements(); // Run on page load
+  </script>
+
+</body>
+
+</html>
